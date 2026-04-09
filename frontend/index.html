@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Indian News Sentiment Analyzer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Indian News Sentiment Analyzer</h1>
+    <p class="subtitle">LLM-powered political news analysis — real-time sentiment & topic classification</p>
+  </header>
+
+  <main>
+    <section class="search-bar">
+      <input type="text" id="topicInput" placeholder="Enter topic e.g. BJP, Lok Sabha, India economy..." value="India elections" />
+      <button id="analyzeBtn" onclick="runAnalysis()">Analyze</button>
+    </section>
+
+    <section class="quick-topics">
+      <span class="label">Quick:</span>
+      <button class="chip" onclick="setTopic('India elections')">India elections</button>
+      <button class="chip" onclick="setTopic('BJP Congress')">BJP vs Congress</button>
+      <button class="chip" onclick="setTopic('Lok Sabha')">Lok Sabha</button>
+      <button class="chip" onclick="setTopic('India economy policy')">Economy</button>
+    </section>
+
+    <section class="stats-row" id="statsRow" style="display:none;">
+      <div class="stat-card">
+        <div class="stat-val" id="totalCount">0</div>
+        <div class="stat-lbl">Articles analyzed</div>
+      </div>
+      <div class="stat-card positive">
+        <div class="stat-val" id="posCount">0</div>
+        <div class="stat-lbl">Positive</div>
+      </div>
+      <div class="stat-card negative">
+        <div class="stat-val" id="negCount">0</div>
+        <div class="stat-lbl">Negative</div>
+      </div>
+      <div class="stat-card neutral">
+        <div class="stat-val" id="neuCount">0</div>
+        <div class="stat-lbl">Neutral</div>
+      </div>
+    </section>
+
+    <div id="loader" class="loader" style="display:none;">
+      <div class="spinner"></div>
+      <p>Fetching news and running LLM analysis...</p>
+    </div>
+
+    <div id="errorMsg" class="error" style="display:none;"></div>
+
+    <section id="resultsGrid" class="results-grid"></section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
